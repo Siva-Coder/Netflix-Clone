@@ -1,6 +1,8 @@
 import axios from '../../axios-movies'
 
 export const FETCH_TRENDING = 'FETCH_TRENDING'
+export const FETCH_LATEST = 'FETCH_LATEST'
+export const FETCH_POPULAR = 'FETCH_POPULAR'
 export const FETCH_NETFLIX_ORIGINALS = 'FETCH_NETFLIX_ORIGINALS'
 export const FETCH_TOP_RATED = 'FETCH_TOP_RATED'
 export const FETCH_ACTION_MOVIES = 'FETCH_ACTION_MOVIES'
@@ -16,6 +18,8 @@ export const FETCH_MOVIE_DETAILS_FAIL = 'FETCH_MOVIE_DETAILS_FAIL'
 export const FETCH_SEARCH_MOVIE = 'FETCH_SEARCH_MOVIE'
 export const FETCH_SEARCH_MOVIE_FAIL = 'FETCH_SEARCH_MOVIE_FAIL'
 export const FETCH_SEARCH_MOVIE_SUCCESS = 'FETCH_SEARCH_MOVIE_SUCCESS'
+
+export const SIGN_IN = 'SIGN_IN'
 
 const media_type = {
   tv: 'tv',
@@ -77,7 +81,29 @@ export const fetchTrending = () => {
         `/trending/all/week?api_key=${process.env.API_KEY}&language=en-US`
       )
       dispatch({ type: FETCH_TRENDING, payload: request })
-    } catch (error) {}
+    } catch (error) { }
+  }
+}
+
+export const fetchLatest = () => {
+  return async (dispatch) => {
+    try {
+      const request = await axios.get(
+        `/movie/latest?api_key=${process.env.API_KEY}&language=en-US`
+      )
+      dispatch({ type: FETCH_LATEST, payload: request })
+    } catch (error) { }
+  }
+}
+
+export const fetchPopular = () => {
+  return async (dispatch) => {
+    try {
+      const request = await axios.get(
+        `/movie/popular?api_key=${process.env.API_KEY}&language=en-US`
+      )
+      dispatch({ type: FETCH_POPULAR, payload: request })
+    } catch (error) { }
   }
 }
 
@@ -88,7 +114,7 @@ export const fetchTopRated = () => {
         `/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US`
       )
       dispatch({ type: FETCH_TOP_RATED, payload: request })
-    } catch (error) {}
+    } catch (error) { }
   }
 }
 
@@ -100,7 +126,7 @@ export const fetchActionMovies = () => {
       )
 
       dispatch({ type: FETCH_ACTION_MOVIES, payload: request })
-    } catch (error) {}
+    } catch (error) { }
   }
 }
 
@@ -112,7 +138,7 @@ export const fetchComedyMovies = () => {
       )
 
       dispatch({ type: FETCH_COMEDY_MOVIES, payload: request })
-    } catch (error) {}
+    } catch (error) { }
   }
 }
 
@@ -123,7 +149,7 @@ export const fetchHorrorMovies = () => {
         `/discover/movie?api_key=${process.env.API_KEY}&with_genres=27`
       )
       dispatch({ type: FETCH_HORROR_MOVIES, payload: request })
-    } catch (error) {}
+    } catch (error) { }
   }
 }
 
@@ -134,7 +160,7 @@ export const fetchRomanceMovies = () => {
         `/discover/movie?api_key=${process.env.API_KEY}&with_genres=10749`
       )
       dispatch({ type: FETCH_ROMANCE_MOVIES, payload: request })
-    } catch (error) {}
+    } catch (error) { }
   }
 }
 
@@ -145,6 +171,18 @@ export const fetchDocumentaries = () => {
         `/discover/movie?api_key=${process.env.API_KEY}&with_genres=99`
       )
       dispatch({ type: FETCH_DOCUMENTARIES, payload: request })
-    } catch (error) {}
+    } catch (error) { }
+  }
+}
+
+export const signIn = (authUser) => {
+  return async (dispatch) => {
+    try {
+      const request = {
+        currentUser: authUser,
+        hidden: true
+      };
+      dispatch({ type: SIGN_IN, payload: request })
+    } catch (error) { }
   }
 }

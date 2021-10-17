@@ -16,7 +16,7 @@ const Header = ({ movie: { name, overview } }) => {
         loop={true}
         width='100%'
         height='100%'
-        volume={1}
+        volume={10}
         muted={isMuted}
         className='header__video'
         url='https://vimeo.com/384025132'

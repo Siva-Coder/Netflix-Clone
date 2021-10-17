@@ -131,5 +131,20 @@ div.swiper-button-next {
         transform: center left;
       }
     }
+
+    &--grid {
+      cursor: pointer;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+      min-height: 0;
+      object-fit: contain;
+
+      &-image {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        border-radius: 5px;
+      }
+    }
   }
 }

@@ -1,9 +1,20 @@
 import React from 'react';
 
-const  NotFound = () => {
+const NotFound = () => {
   return (
     <div>
-      <h1>NOT FOUND</h1>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <h1 style={{ color: "#fff", textAlign: 'center' }}>NOT FOUND</h1>
     </div>
   );
 }
